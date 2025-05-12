@@ -24,36 +24,42 @@ print(ten)
 
 //cell6
 def vect_vect(x1,x2):
-total=0
-for w,x in zip(x1,x2):
-total+=w*x
-return total
+ total=0
+ for w,x in zip(x1,x2):
+   total+=w*x
+ return total
+
+//cell7
 w=np.random.rand(2)
 x=np.ones_like(w)
 print(vect_vect(w,x))
 
-//cell7
+//cell8
 def m_v(wm,xv):
-total=[]
-for wv in wm:
-total.append(vect_vect(wv,xv))
-return total
+ total=[]
+ for wv in wm:
+  total.append(vect_vect(wv,xv))
+ return total
+
+//cell9
 w=np.random.rand(10,10)
 x=np.ones(10)
 print(m_v(w,x))
 print(np.sum(w))
 
-//cell8
+//cell10
 def mat_mat(x1,x2):
-total=[]
-for w,x in zip(x1,x2):
-total.append(vect_vect(w,x))
-return total
+ total=[]
+ for w,x in zip(x1,x2):
+   total.append(vect_vect(w,x))
+ return total
+
+//cell11
 w=np.random.rand(3,3)
 x=np.ones([3,3])
 print(mat_mat(w,x))
 
-//cell9
+//cell12
 #vector vector
 import numpy as np
 import matplotlib.pyplot as plt
@@ -61,41 +67,41 @@ xv=np.random.rand(10)
 print(xv)
 print(type(xv),xv.ndim,xv.shape )
 
-//cell10
+//cell13
 from re import X
 for x1,x2 in zip(xv,xv):
-print (x1,x2)
-def v_v (wv,xv):
-total=0
-for w,v in zip(wv,xv):
-total+=w*X
-return total
+ print (x1,x2)
+ def v_v (wv,xv):
+   total=0
+   for w,v in zip(wv,xv):
+    total+=w*X
+    return total
 
-//cell11
+//cell14
 w=np.random.rand(10)
 x=np.ones_like(w)
 print(v_v(w,x))
 print(np.sum(w))
 
-//cell12
+//cell15
 #matric vector
 def m_v(wm,xv):
-total=[]
-for wv in wm:
-total.append(v_v(wv,xv))
-return total
+ total=[]
+ for wv in wm:
+  total.append(v_v(wv,xv))
+ return total
 w=np.random.rand(10,10)
 x=np.ones(10)
 print(m_v(w,x))
 print(np.sum(w))
 
-//cell13
+//cell16
 #matrix matrix
 def m_m(wm,xm):
-total=[]
-for w,x in zip(wm,xm.T):
-total.append(v_v(w,x))
-return total
+ total=[]
+ for w,x in zip(wm,xm.T):
+  total.append(v_v(w,x))
+ return total
 w=np.random.rand(10,10)
 x=np.ones((10,10))
 print(m_m(w,x))
