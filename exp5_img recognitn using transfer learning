@@ -11,10 +11,10 @@ import tensorflow as tf
  )
 
 //cell3
- train_ds=tf.image.resize(train_ds,(150,150))
- test_ds=tf.image.resize(test_ds,(150,150))
- train_labels=tf.keras.utils.to_categorical(train_labels,num_classes=5)
- test_labels=tf.keras.utils.to_categorical(test_labels,num_classes=5)
+train_ds=tf.image.resize(train_ds,(150,150))
+test_ds=tf.image.resize(test_ds,(150,150))
+train_labels=tf.keras.utils.to_categorical(train_labels,num_classes=5)
+test_labels=tf.keras.utils.to_categorical(test_labels,num_classes=5)
 
 //cell4
  from tensorflow.keras.applications.vgg16 import VGG16
@@ -46,9 +46,9 @@ import tensorflow as tf
  ])
 
 //cell8
- from tensorflow.keras.callbacks import EarlyStopping
- model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
- model.fit(train_ds,train_labels,epochs=2)
+from tensorflow.keras.callbacks import EarlyStopping
+model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+model.fit(train_ds,train_labels,epochs=2)
 
 //cell9
  model.predict(test_ds[:2])
