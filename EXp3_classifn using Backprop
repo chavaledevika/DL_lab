@@ -41,36 +41,36 @@ losses = []
 //cell9
 #Sigmoid activation function for hidden layer and output
 def sigmoid(z):
-z= 1/(1+np.exp(-z))
-return z
+ z= 1/(1+np.exp(-z))
+ return z
 
 //cell10
 #forward propagation
 def forward_prop(w1,w2,x):
-z1 = np.dot(w1,x)
-a1 = sigmoid(z1)
-z2 = np.dot(w2,a1)
-a2 = sigmoid(z2)
-return z1,a1,z2,a2
+ z1 = np.dot(w1,x)
+ a1 = sigmoid(z1)
+ z2 = np.dot(w2,a1)
+ a2 = sigmoid(z2)
+ return z1,a1,z2,a2
 
 //cell11
 #backward propagation
 def back_prop(m,w1,w2,z1,a1,z2,a2,y):
-dz2 = a2-y
-dw2 = np.dot(dz2,a1.T)/m
-dz1 = np.dot(w2.T,dz2)*a1*(1-a1)
-dw1 = np.dot(dz1,x.T)
-return dz2,dw2,dz1,dw1
+ dz2 = a2-y
+ dw2 = np.dot(dz2,a1.T)/m
+ dz1 = np.dot(w2.T,dz2)*a1*(1-a1)
+ dw1 = np.dot(dz1,x.T)
+ return dz2,dw2,dz1,dw1
 
 //cell12
 iterations = 10000
 for i in range(iterations):
-z1,a1,z2,a2=forward_prop(w1,w2,x)
-loss = -(1/m)*np.sum(y*np.log(a2)+(1-y)*np.log(1-a2))
-losses.append(loss)
-da2,dw2,dz1,dw1 = back_prop(m,w1,w2,z1,a1,z2,a2,y)
-w2 = w2-lr*dw2
-w1 = w1-lr*dw1
+ z1,a1,z2,a2=forward_prop(w1,w2,x)
+ loss = -(1/m)*np.sum(y*np.log(a2)+(1-y)*np.log(1-a2))
+ losses.append(loss)
+ da2,dw2,dz1,dw1 = back_prop(m,w1,w2,z1,a1,z2,a2,y)
+ w2 = w2-lr*dw2
+ w1 = w1-lr*dw1
 
 //cell13
 plt.plot(losses)
@@ -79,12 +79,12 @@ plt.ylabel("Loss Value")
 
 //cell14
 def predict(w1,w2,input):
-z1,a1,z2,a2=forward_prop(w1,w2,test)
-a2=np.squeeze(a2)
-if a2>=0.5:
-print("For Input", [i[0] for i in input],"Output is 1")
-else:
-print("For Input", [i[0] for i in input],"Output is 0")
+ z1,a1,z2,a2=forward_prop(w1,w2,test)
+ a2=np.squeeze(a2)
+ if a2>=0.5:
+  print("For Input", [i[0] for i in input],"Output is 1")
+ else:
+  print("For Input", [i[0] for i in input],"Output is 0")
 
 //cell15
 test = np.array([[1],[0]])
