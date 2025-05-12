@@ -45,22 +45,11 @@ print("prediction :",y_pred)
 
 //cell8
 def create_RNN(hidden_units, input_shape, dense_units, activation):
-"""
-Creates and compiles a simple RNN model.
-Args:
-   hidden_units (int): The number of hidden units in the RNN layer.
-   input_shape (tuple): The shape of the input data.
-   dense_units (int): The number of units in the dense layer.
-   activation (list): A list containing the activation functions
-                      for the RNN and Dense layers, respectively.
-Returns:
-keras.Model: The compiled RNN model.
-"""
-model = Sequential()
-model.add(SimpleRNN(hidden_units, input_shape=input_shape, activation=activation[0]))
-model.add(Dense(units=dense_units, activation=activation[1]))
-model.compile(loss='mean_squared_error', optimizer='adam')
-return model
+ model = Sequential()
+ model.add(SimpleRNN(hidden_units, input_shape=input_shape, activation=activation[0]))
+ model.add(Dense(units=dense_units, activation=activation[1]))
+ model.compile(loss='mean_squared_error', optimizer='adam')
+ return model
 
 //cell9
 # Call create_RNN to instantiate the model
