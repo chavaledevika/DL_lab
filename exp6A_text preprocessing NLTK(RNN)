@@ -1,0 +1,93 @@
+//cell1
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+
+//cell2
+news = pd.read_csv('/content/Fake.csv')
+print(news.head())
+print(news.shape)
+
+//cell3
+import string
+print(string.punctuation)
+len(string.punctuation)
+
+//cell4
+def remove_punctuation(text):
+no_punct=[words for words in text if words not in string.punctuation]
+words_wo_punct=''.join(no_punct)
+return words_wo_punct
+news['title_wo_punct']=news['title'].apply(lambda x: remove_punctuation(x))
+news.head()
+
+//cell5
+import re
+def tokenize(text):
+split=re.split("\W+",text)
+return split
+news['title_wo_punct'].apply(lambda x: tokenize(x.lower)))
+news.head()
+
+//cell6
+import nltk
+nltk.download('stopwords')
+
+//cell7
+stopword = nltk.corpus.stopwords.words('english')
+print(stopword[:11])
+
+//cell8
+# Function to remove stopwords
+def remove_stopwords(tokenized_text):
+filtered_words = [word for word in tokenized_text if word not in stopword]
+return filtered_words
+
+//cell9
+news['title_wo_stopwords'] = news['title_wo_punct_split'].apply(lambda x: remove_stopwords(x))
+news.head()
+
+//cell10
+# Import PorterStemmer
+from nltk.stem import PorterStemmer
+
+//cell11
+# Initialize the stemmer
+ps = PorterStemmer()
+
+//cell12
+# Example: Stemming words
+print(ps.stem('believe')) # Output: belie
+print(ps.stem('believing')) # Output: believ
+print(ps.stem('believed')) # Output: believ
+print(ps.stem('believes')) # Output: believ
+
+//cell13
+from nltk.stem import WordNetLemmatizer
+nltk.download("wordnet")
+nltk.download("omw-1.4")
+
+//cell14
+wn = WordNetLemmatizer()
+print(wn.lemmatize("believe"))
+print(wn.lemmatize("believing"))
+print(wn.lemmatize("believed"))
+print(wn.lemmatize("believes"))
+print(wn.lemmatize("ate"))
+
+//cell15
+import nltk
+from nltk.stem import WordNetLemmatizer
+
+//cell16
+# Ensure the necessary NLTK resources are downloaded
+nltk.download('wordnet') nltk.download('omw-1.4')
+
+//cell17
+lemmatizer = WordNetLemmatizer()
+# Lemmatizing words
+print(lemmatizer.lemmatize("believe", pos='v')) # Verb
+print(lemmatizer.lemmatize("believing", pos='v')) # Verb
+print(lemmatizer.lemmatize("believed", pos='v')) # Verb
+print(lemmatizer.lemmatize("believes", pos='v')) # Verb
+
+print(lemmatizer.lemmatize("ate")) # Verb
