@@ -1,0 +1,88 @@
+//cell1
+import numpy as np
+
+//cell2
+def unit_step(v):
+if v >= 0:
+return 1
+else:
+return 0
+
+//cell3
+"""Heavysize step function v must be scalar"""
+def perceptron(x, w, b):
+yin=np.dot(x,w)+b
+y=unit_step(yin)
+return y
+
+//cell4
+AND Gate
+def AND_percep(x):
+w = np.array([1,1])
+b = -1.5
+return perceptron(x,w,b)
+e1 = np.array([1,1])
+e2 = np.array([0,1])
+e3 = np.array([1,0])
+e4 = np.array([0,0])
+print("AND({}, {}) = {}".format(1,1, AND_percep(e1)))
+print("AND({}, {}) = {}".format(0,1, AND_percep(e2)))
+print("AND({}, {}) = {}".format(1,0, AND_percep(e3)))
+print("AND({}, {}) = {}".format(0,0, AND_percep(e4)))
+
+//cell5
+OR Gate
+def OR_percep(x):
+w = np.array([1,1])
+b = -0.5
+return perceptron(x, w, b)
+e1 = np.array([1,1])
+e2 = np.array([0,1])
+e3 = np.array([1,0])
+e4 = np.array([0,0])
+print("OR({}, {}) = {}".format(1,1, OR_percep(e1)))
+print("OR({}, {}) = {}".format(0,1, OR_percep(e2)))
+print("OR({}, {}) = {}".format(1,0, OR_percep(e3)))
+print("OR({}, {}) = {}".format(0,0, OR_percep(e4)))
+
+//cell6
+NOR Gate
+def NOR_percep(x):
+w = np.array([-1,-1])
+b = 0.5
+return perceptron(x, w, b)
+e1 = np.array([1,1])
+e2 = np.array([0,1])
+e3 = np.array([1,0])
+e4 = np.array([0,0])
+print("NOR({}, {}) = {}".format(1,1, NOR_percep(e1)))
+print("NOR({}, {}) = {}".format(0,1, NOR_percep(e2)))
+print("NOR({}, {}) = {}".format(1,0, NOR_percep(e3)))
+print("NOR({}, {}) = {}".format(0,0, NOR_percep(e4)))
+
+//cell7
+XOR Gate
+def XOR_percep(x):
+w = np.array([-1,-1])
+b = 0.5
+return perceptron(x, w, b)
+e1 = np.array([1,1])
+e2 = np.array([0,1])
+e3 = np.array([1,0])
+e4 = np.array([0,0])
+print("XOR({}, {}) = {}".format(1,1, XOR_percep(e1)))
+print("XOR({}, {}) = {}".format(0,1, XOR_percep(e2)))
+print("XOR({}, {}) = {}".format(1,0, XOR_percep(e3)))
+print("XOR({}, {}) = {}".format(0,0, XOR_percep(e4)))
+
+//cell8
+NOT Gate
+def NOT_percep(x):
+w = np.array([-1])
+b = 0.5
+return perceptron(x, w, b)
+e1 = np.array([1])
+e2 = np.array([0])
+
+print("NOT({} ) = {}".format(1, NOT_percep(e1)))
+print("NOT({} ) = {}".format(0, NOT_percep(e2)))
